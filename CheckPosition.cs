@@ -10,62 +10,160 @@ namespace SnakeAndLadderProblem
     {
         public void CheckPositioNofPlayer()
         {
-            int iPosition = 0, iCount = 0;
+            int iPosition1 = 0, iPosition2 = 0, iDice1 = 0, iDice2 = 0;
 
-            Console.WriteLine("Enter Player name");
-            string iPlayer1 = Convert.ToString(Console.ReadLine());
 
-            while (iPosition <= 100)
+            Console.WriteLine("Enter 1st Player name");
+            string sPlayer1 = Convert.ToString(Console.ReadLine());
+
+            Console.WriteLine("Enter 2nd Player name");
+            string sPlayer2 = Convert.ToString(Console.ReadLine());
+
+
+            while ((iPosition1 <= 100) || (iPosition2 <= 100))
             {
-                Random random = new Random();
-                int iDice = random.Next(1, 7);
+                for (int iChange = 1; iChange <= 2; iChange++)
+                {
+                    Random random2 = new Random();
 
-                iCount++;
-                Console.WriteLine("Dice Rolled {0}", iCount);
+                    switch (iChange)
+                    {
+                        case 1:
 
-                iPosition += iDice;
-                Console.WriteLine("Dice Number is :{0} \nPosition is {1}\n", +iDice, iPosition);
+                            iDice1 = random2.Next(1, 7);
+                            Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}",sPlayer1, iDice1);
 
-                if (iPosition > 100)
-                {
-                    iPosition = iPosition - iDice;
-                    Console.WriteLine("Not Valid Please Tray Again {0}", iPosition);
+                            iPosition1 += iDice1;
+                            Console.WriteLine("Position is : {0}\n", +iPosition1);
 
-                }
-                else if ((iPosition == 99) || (iPosition == 95) || (iPosition == 87) || (iPosition == 65)) // Snake
-                {
-                    iPosition -= 17;
-                    Console.WriteLine("You Got Sneke Position is {0}", iPosition);
-                }
-                else if ((iPosition == 62) || (iPosition == 54) || (iPosition == 17))   // Snake
-                {
-                    iPosition -= 9;
-                    Console.WriteLine("You Got Sneke Position is {0}", iPosition);
-                }
-                else if ((iPosition == 4) || (iPosition == 9) || (iPosition == 51) || (iPosition == 40) || (iPosition == 63) || (iPosition == 51))// Ladder
-                {
-                    iPosition += 13;
-                    Console.WriteLine("You Got Ladder Position is {0}", iPosition);
-                }
-                else if (iPosition == 24) // Ladder
-                {
-                    iPosition += 48;
-                    Console.WriteLine("You Got Ladder Position is {0}", iPosition);
-                }
-                else if (iPosition <= 0)
-                {
-                    iPosition = 0;   // reset
+                            if (iPosition1 > 100)
+                            {
+                                iPosition1 = iPosition1 - iDice1;
+                                Console.WriteLine("Not Valid your position is same : {0}\n", iPosition1);
+                                break;
 
-                }
-                else if (iPosition == 100)
-                {
-                    break;
+                            }
+                            else if ((iPosition1 == 99) || (iPosition1 == 95) || (iPosition1 == 87) || (iPosition1 == 65)) // Snake
+                            {
+                                iPosition1 -= 17;
+                                Console.WriteLine("You Got Sneke : {0} new position is : {1}\n", sPlayer1, iPosition1);
+                            }
+                            else if ((iPosition1 == 62) || (iPosition1 == 54) || (iPosition1 == 17))   // Snake
+                            {
+                                iPosition1 -= 9;
+                                Console.WriteLine("You Got Sneke : {0} new positin is : {1}\n", sPlayer1, iPosition1);
+                            }
 
+                            else if ((iPosition1 == 4) || (iPosition1 == 9) || (iPosition1 == 51) || (iPosition1 == 40) || (iPosition1 == 63) || (iPosition1 == 51))// Ladder
+                            {
+                                iPosition1 += 13;
+                                Console.WriteLine("You Got Ladder : {1} new position is : {0}\n", iPosition1, sPlayer1);
+
+                                Console.WriteLine("Play Again\n");
+
+                                iDice1 = random2.Next(1, 7);
+                                Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}", sPlayer1, iDice1);
+
+                                iPosition1 += iDice1;
+                                Console.WriteLine("Position is : {0}\n", +iPosition1);
+
+                            }
+                            else if (iPosition1 == 24) // Ladder
+                            {
+                                iPosition1 += 48;
+                                Console.WriteLine("You Got Ladder : {1} new position is : {0}\n", iPosition1, sPlayer1);
+
+                                Console.WriteLine("Play Again\n");
+
+                                iDice1 = random2.Next(1, 7);
+                                Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}", sPlayer1, iDice1);
+
+                                iPosition1 += iDice1;
+                                Console.WriteLine("Position is : {0}\n", +iPosition1);
+
+                            }
+                            else if (iPosition1 <= 0)
+                            {
+                                iPosition1 = 0;   // reset
+
+                            }
+                            else if (iPosition1 == 100)
+                            {
+                                Console.WriteLine("********* Congratulation {0} You are Winner *********** ", sPlayer1);
+                                return;
+                            }
+
+                            break;
+
+                        case 2:
+
+                            iDice2 = random2.Next(1, 7);
+                            Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}",sPlayer2, iDice2);
+
+                            iPosition2 += iDice2;
+                            Console.WriteLine("Position is : {0}\n", iPosition2);
+
+                            if (iPosition2 > 100)
+                            {
+                                iPosition2 = iPosition2 - iDice2;
+                                Console.WriteLine("Not Valid  your position remain same : {0}\n", iPosition2);
+                                break;
+
+                            }
+                            else if ((iPosition2 == 99) || (iPosition2 == 95) || (iPosition2 == 87) || (iPosition2 == 65)) // Snake
+                            {
+                                iPosition2 -= 17;
+                                Console.WriteLine("You Got Sneke : {1} new position is : {0}\n", iPosition2, sPlayer2);
+                            }
+                            else if ((iPosition2 == 62) || (iPosition2 == 54) || (iPosition2 == 17))   // Snake
+                            {
+                                iPosition2 -= 9;
+                                Console.WriteLine("You Got Sneke : {1} new position is : {0}\n", iPosition2, sPlayer2);
+                            }
+                            else if ((iPosition2 == 4) || (iPosition2 == 9) || (iPosition2 == 51) || (iPosition2 == 40) || (iPosition2 == 63) || (iPosition2 == 51))// Ladder
+                            {
+                                iPosition2 += 13;
+                                Console.WriteLine("You Got Ladder : {1} new position is : {0}\n", iPosition2, sPlayer2);
+
+                                Console.WriteLine("Play Again\n");
+
+                                iDice2 = random2.Next(1, 7);
+                                Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}", sPlayer2, iDice2);
+
+                                iPosition2 += iDice2;
+                                Console.WriteLine("Position is : {0}\n", iPosition2);
+                            }
+                            else if (iPosition2 == 24) // Ladder
+                            {
+                                iPosition2 += 48;
+                                Console.WriteLine("You Got Ladder : {1} new Position is : {0}\n", iPosition2, sPlayer2);
+
+                                Console.WriteLine("Play Again\n");
+
+                                iDice2 = random2.Next(1, 7);
+                                Console.WriteLine("Dice Rolled by : {0}\nNumber is : {1}", sPlayer2, iDice2);
+
+                                iPosition2 += iDice2;
+                                Console.WriteLine("Position is : {0}\n", iPosition2);
+                            }
+                            else if (iPosition2 <= 0)
+                            {
+                                iPosition2 = 0;   // reset
+
+                            }
+                            else if (iPosition2 == 100)
+                            {
+                                Console.WriteLine("*********** Congratulation {0} You are Winner ************* ", sPlayer2);
+                                return;
+                            }
+                            break;
+                    }
                 }
             }
-            Console.WriteLine("Winner is : {0}\nTotal Number of times Dice Rolled : {1}", iPlayer1, iCount);
+
         }
     }
- }
+}
+
 
 
