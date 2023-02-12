@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadderProblem
 {
-    public class SnakeAndLadderStart
+    public  class SnakeAndLadderStar
     {
-        public void StartPosionZero()
+        public void PlayerRolled()
         {
             Console.WriteLine("Enter Player name");
             string sPlayer1 = Convert.ToString(Console.ReadLine());
-            int iPosition = 0;
-            Console.WriteLine("Position is : {0}", iPosition);
+
+            Random random = new Random();
+            int iDice = random.Next(1, 7);
+            Console.WriteLine("Dice Number Is :{0}", iDice);
 
         }
     }
