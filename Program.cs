@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             Console.WriteLine("************** Welcome To Snake And Ladder Programs ******************");
-            SnakeAndLadderStar obj = new SnakeAndLadderStar();
-            obj.PlayerRolled();
+            CheckPosition obj = new CheckPosition();
+            obj.CheckPositioNofPlayer();
             Console.ReadLine();
         }
     }
